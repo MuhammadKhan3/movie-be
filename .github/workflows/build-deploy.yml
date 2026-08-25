@@ -29,8 +29,8 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            ghcr.io/${{ github.repository }}:latest
-            ghcr.io/${{ github.repository }}:${{ github.sha }}
+            ghcr.io/muhammadkhan3/movie-be:latest
+            ghcr.io/muhammadkhan3/movie-be:${{ github.sha }}
 
       - name: Deploy backend image
         uses: appleboy/ssh-action@v1.0.3
