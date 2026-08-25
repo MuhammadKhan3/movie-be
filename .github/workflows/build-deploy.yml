@@ -29,8 +29,8 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            ghcr.io/muhammadkhan3/movie-be:latest
-            ghcr.io/muhammadkhan3/movie-be:${{ github.sha }}
+            ghcr.io/${{ github.repository }}:latest
+            ghcr.io/${{ github.repository }}:${{ github.sha }}
 
       - name: Deploy backend image
         uses: appleboy/ssh-action@v1.0.3
@@ -39,7 +39,7 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           port: ${{ secrets.SSH_PORT || 22 }}
           # Keep this as a dedicated server deploy key; do not reuse your personal GitHub SSH key.
-          key: ${{ secrets.DEPLOY_SSH_PRIVATE_KEY }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             set -e
             cd "${{ secrets.REMOTE_COMPOSE_DIR }}"
